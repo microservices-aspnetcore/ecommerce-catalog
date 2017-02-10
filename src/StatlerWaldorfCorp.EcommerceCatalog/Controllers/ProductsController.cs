@@ -17,7 +17,7 @@ namespace StatlerWaldorfCorp.EcommerceCatalog.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            return this.Ok();
-        }        
+            return this.Ok(this.productRepository.All());
+        }
     }
 }
