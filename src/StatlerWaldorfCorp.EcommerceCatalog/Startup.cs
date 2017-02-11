@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using Steeltoe.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System.Linq;
 using StatlerWaldorfCorp.EcommerceCatalog.Persistence;
+using Steeltoe.Discovery.Client;
 
 namespace StatlerWaldorfCorp.EcommerceCatalog
 {
