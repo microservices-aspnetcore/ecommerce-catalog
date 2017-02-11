@@ -15,16 +15,19 @@ namespace StatlerWaldorfCorp.EcommerceCatalog
         public IConfigurationRoot Configuration { get; }
         
         public Startup(IHostingEnvironment env)
-        {
+        {            
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDiscoveryClient(Configuration);
             services.AddScoped<IProductRepository, MemoryProductRepository>();            
         }
 
         public void Configure(IApplicationBuilder app)
         {
+            app.UseDiscoveryClient();
+            app.UseMvc(); 
         }                       
     }
 }
