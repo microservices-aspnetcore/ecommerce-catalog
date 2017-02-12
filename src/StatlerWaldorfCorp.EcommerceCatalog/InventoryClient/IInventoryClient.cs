@@ -1,9 +1,10 @@
 using StatlerWaldorfCorp.EcommerceCatalog.Models;
+using System.Threading.Tasks;
 
 namespace StatlerWaldorfCorp.EcommerceCatalog.InventoryClient
 {
     public interface IInventoryClient
     {
-        StockStatus GetStockStatus(int sku);
+        Task<StockStatus> GetStockStatusAsync(int sku);
     }
 }

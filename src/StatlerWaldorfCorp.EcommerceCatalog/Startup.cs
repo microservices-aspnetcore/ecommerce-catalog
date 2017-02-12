@@ -15,11 +15,18 @@ namespace StatlerWaldorfCorp.EcommerceCatalog
         public IConfigurationRoot Configuration { get; }
         
         public Startup(IHostingEnvironment env)
-        {            
+        {
+            var builder = new ConfigurationBuilder()
+                // Remove AddJsonFile later 
+                .SetBasePath(System.IO.Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+
+            Configuration = builder.Build();
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();            
             services.AddDiscoveryClient(Configuration);
             services.AddScoped<IProductRepository, MemoryProductRepository>();            
         }
