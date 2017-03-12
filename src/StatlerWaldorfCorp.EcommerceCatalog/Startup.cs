@@ -13,11 +13,10 @@ namespace StatlerWaldorfCorp.EcommerceCatalog
     public class Startup
     {
         public IConfigurationRoot Configuration { get; }
-        
+
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
-                // Remove AddJsonFile later 
                 .SetBasePath(System.IO.Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
 
@@ -26,15 +25,15 @@ namespace StatlerWaldorfCorp.EcommerceCatalog
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();            
+            services.AddMvc();
             services.AddDiscoveryClient(Configuration);
-            services.AddScoped<IProductRepository, MemoryProductRepository>();            
+            services.AddScoped<IProductRepository, MemoryProductRepository>();
         }
 
         public void Configure(IApplicationBuilder app)
         {
             app.UseDiscoveryClient();
-            app.UseMvc(); 
-        }                       
+            app.UseMvc();
+        }
     }
 }
