@@ -5,6 +5,7 @@ namespace StatlerWaldorfCorp.EcommerceCatalog.Persistence
 {
     public interface IProductRepository
     {
-        ICollection<Product> All(); 
+        ICollection<Product> All();
+        Product Get(int sku);
     }
 }

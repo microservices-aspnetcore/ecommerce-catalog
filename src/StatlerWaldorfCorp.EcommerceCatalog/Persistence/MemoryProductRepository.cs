@@ -5,19 +5,19 @@ namespace StatlerWaldorfCorp.EcommerceCatalog.Persistence
 {
     public class MemoryProductRepository : IProductRepository
     {
-        private List<Product> products;
+        private Dictionary<int, Product> products;
 
         public MemoryProductRepository()
         {
-            products = new List<Product>();
+            products = new Dictionary<int, Product>();
 
-            products.Add(new Product
+            products.Add(123, new Product
             {
                 SKU = 123,
                 Name = "The Magic 123"
             });
 
-            products.Add(new Product
+            products.Add(456, new Product
             {
                 SKU = 456,
                 Name = "Supervac"
@@ -25,7 +25,12 @@ namespace StatlerWaldorfCorp.EcommerceCatalog.Persistence
         }
         public ICollection<Product> All()
         {
-            return products;
+            return products.Values;
+        }
+
+        public Product Get(int sku)
+        {
+            return products[sku];
         }
     }
 }

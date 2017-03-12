@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 using System.Linq;
 using StatlerWaldorfCorp.EcommerceCatalog.Persistence;
 using Steeltoe.Discovery.Client;
+using StatlerWaldorfCorp.EcommerceCatalog.InventoryClient;
 
 namespace StatlerWaldorfCorp.EcommerceCatalog
 {
@@ -27,6 +28,7 @@ namespace StatlerWaldorfCorp.EcommerceCatalog
         {
             services.AddMvc();
             services.AddDiscoveryClient(Configuration);
+            services.AddScoped<IInventoryClient, HttpInventoryClient>();
             services.AddScoped<IProductRepository, MemoryProductRepository>();
         }
 
